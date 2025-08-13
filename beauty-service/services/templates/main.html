@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>добро пожаловать в салон - Beauty setvice</h1>
+
+<section class="services-section"> 
+    <div class="services-section-wrapper"> 
+        <h2>Услуги</h2>
+        <div class="container">
+            {% for service in services %}
+            <div class="service-block">
+                <div class="service-block-header">
+                    <h3>{{ service.name }}</h3>
+                    <span>{{ service.price }}</span>
+                    <a href="service/{{ service.id }}/">запись</a >
+                </div>
+                <div class="service-block-footer">
+                    <ul>
+                        {% for employee in service.employees.all %}
+                        <li>{{ employee.name }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+<section>
+{% endblock %}

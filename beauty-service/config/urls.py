@@ -16,7 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from services.views import index_view, service_view, service_register_view
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    # user views
+    path('', index_view),
+    path('service/<int:pk>/', service_view, name='service-view'),
+    path('service/<int:pk>/register', service_register_view)
 ]
